@@ -1,0 +1,68 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/assets/images/login_bg.jpg');
+    background-size: cover;
+}
+
+.logoimg {
+    margin-top: 20px;
+}
+
+.loginAndRegBox {
+    width: 400px;
+    height: 310px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.title-box {
+    height: 60px;
+    background: url('/assets/images/login_title.png') no-repeat center;
+}
+
+.reg-box {
+    display: none
+}
+
+
+/* 美化登录表单 */
+
+.layui-form {
+    padding: 0 30px;
+}
+
+.links {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.links a {
+    font-size: 12px;
+}
+
+
+/* 登录框最前面的图标 */
+
+.layui-form-item {
+    position: relative;
+}
+
+.layui-icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+
+/* 注意:这里的样式 不能直接给layui-input 因为权重的问题  所以必须加父元素提高权重 */
+
+.layui-form-item .layui-input {
+    padding-left: 32px;
+}
