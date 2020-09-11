@@ -21,12 +21,12 @@
         <!-- 登录界面 -->
         <div class="login-box">
             <!-- 登录的表单 -->
-            <form class="layui-form" action="">
+            <form class="layui-form" id="form_login">
                 <!-- 用户名 -->
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-username
                     "></i>
-                    <input type="text" name="title" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                    <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                 </div>
                 <!-- 密码 -->
                 <div class="layui-form-item">
@@ -47,7 +47,7 @@
         <!-- 注册界面 -->
         <div class="reg-box">
             <!-- 注册的表单 -->
-            <form class="layui-form" action="">
+            <form class="layui-form" id="form_reg">
                 <!-- 用户名 -->
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-username"></i>
@@ -72,15 +72,16 @@
                     <a href="javascript:;" id="link_login">去登录</a>
                 </div>
             </form>
+            </form>
         </div>
     </div>
-
-
 
     <!-- 引入layui的js文件 -->
     <script src="./assets/lib/layui/layui.all.js"></script>
     <!-- 引入jquery文件 -->
     <script src="./assets/lib/jquery.js"></script>
+    <!-- 引入baseAPI文件 -->
+    <script src="/assets/js/baseAPI.js"></script>
     <!-- 引入自己的js文件 -->
     <script src="./assets/js/login.js"></script>
 </body>
