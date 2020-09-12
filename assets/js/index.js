@@ -1,9 +1,9 @@
 $(function() {
     // 获取用户数据信息
-    getUerInfo()
+    getUserInfo()
 
     //获取用户数据信息的函数
-    function getUerInfo() {
+    function getUserInfo() {
         $.ajax({
             method: 'GET',
             url: '/my/userinfo',
@@ -11,7 +11,7 @@ $(function() {
             //     Authorization: localStorage.getItem('token') || ''
             // },
             success: function(res) {
-                console.log(res);
+                // console.log(res);
                 if (res.status !== 0) {
                     return layui.layer.msg(res.message)
                 }
