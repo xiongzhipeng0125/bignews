@@ -63,7 +63,7 @@ $(function() {
                 if (res.status !== 0) {
                     return layer.msg(res.message)
                 }
-                console.log(res);
+                // console.log(res);
                 var cateHtml = template('tpl-cate', res)
                     // console.log(cateHtml);
                 $('.layui-form [name=cate_id]').html(cateHtml)
@@ -119,6 +119,33 @@ $(function() {
         })
     }
 
+    //删除文章
+    $('body').on('click', '.delBtn', function() {
+        var delId = $(this).attr('data-id')
+        var delLen = $(this).length
 
+        layer.confirm('是否删除文章?', { icon: 3, title: '提示' }, function(index) {
+            //do something
+            $.ajax({
+                method: 'GET',
+                url: `/my/article/delete/${delId}`,
+                success: function(res) {
+                    if (res.status !== 0) {
+                        return layer.msg(res.message)
+                    }
+                    layer.msg(res.message)
+
+                    //根据当前页面删除按钮的个数做判断
+                    //如果按钮的个数 > 1. 说明当前页文章个数 至少2条 不做处理
+                    //如果按钮的个数 = 1. 说明当前页文章个数 只有1条 让页码值 -1 即可
+                    if (delLen === 1) {
+                        q.pagenum = q.pagenum === 1 ? 1 : q.pagenum - 1
+                    }
+                    initCate()
+                }
+            })
+            layer.close(index);
+        })
+    })
 
 })
