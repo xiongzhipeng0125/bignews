@@ -1,6 +1,7 @@
 $(function() {
     var layer = layui.layer
     var form = layui.form
+    var laypage = layui.laypage
 
     //声明查询参数
     var q = {
@@ -44,6 +45,9 @@ $(function() {
                 }
                 var table = template('tpl-table', res)
                 $('tbody').html(table)
+
+                //调用处理分页的方法
+                renderPage(res.total)
             }
         })
     }
@@ -84,4 +88,37 @@ $(function() {
 
         initTable()
     })
+
+
+    //分页处理
+    function renderPage(total) {
+        laypage.render({
+            elem: 'renderpage', //分页展示的区域 注意，这里的 test1 是 ID，不用加 # 号
+            count: total, //数据总数，从服务端得到
+            limit: q.pagesize, //每页的条数
+            curr: q.pagenum, //起始页面
+
+            //页面的展示,是根据配置的顺序来展示的
+            layout: ['count', 'limit', 'prev', 'page', 'next', 'skip'],
+            limits: [2, 3, 5, 10],
+
+            //jump的触发方式有两种
+            //1 初始化的时候 调用laypage.render
+            //2 切换页码值的时候 会触发
+            jump: function(obj, first) {
+                q.pagenum = obj.curr
+
+                //在jump回调函数中 可以取到所有配置的值
+                //所以可以使用obj.limit 获取到最新的每页显示条数
+                q.pagesize = obj.limit
+
+                if (!first) {
+                    initTable()
+                }
+            }
+        })
+    }
+
+
+
 })
